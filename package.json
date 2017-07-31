@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "scripts": {
+    "build:5": "browserify src-es5/*.js -o dist/bundle-es5.js",
+    "build:6": "browserify src-es6/*.js -o dist/bundle-es6.js",
+    "build:t": "browserify src-es6/*.js -o dist/bundle-transpiled-es5.js -t babelify",
+    "build": "run-p build:*",
+    "start": "serve -p 8000",
+    "compare": "node compare.js",
+    "snippets:build": "cd snippets/original && babel *.js -d ../transpiled",
+    "snippets:compare": "node snippets/compare-snippets.js",
+    "snippets": "run-s snippets:*"
+  },
+  "dependencies": {
+    "serve": "^3.2.2",
+    "todomvc-app-css": "^2.0.1",
+    "todomvc-common": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-react": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "cli-table2": "^0.2.0",
+    "npm-run-all": "^3.1.2"
+  }
+}
